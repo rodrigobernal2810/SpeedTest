@@ -1,0 +1,19 @@
+version: '3'
+services:
+  webserver:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: speedtest-img:1.0
+    container_name: speedtest-container
+    ports:
+      - "8181:80"
+    volumes:
+      - .:/var/www/html/
+    networks:
+      sdsga_network:
+        ipv4_address: 10.10.0.99
+
+networks:
+  sdsga_network:
+    external: true
